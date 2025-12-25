@@ -7,12 +7,11 @@
 <meta name="description" content="Maneyfeddora Entertainment - Music Production, Artists, Beats, Events & Social Media Feed.">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
-/* --- Styles (same as previous full version) --- */
 body {margin:0; font-family:Arial,sans-serif; background:#000; color:#fff;}
 nav{display:flex; justify-content:center; gap:15px; padding:12px; background:rgba(0,0,0,0.8);}
 nav img{height:50px;}
 nav a, nav button{color:#0f0; text-decoration:none; font-weight:bold; padding:8px 10px; border-radius:5px; border:none; cursor:pointer;}
-.hero{position:relative; width:100%; height:300px; overflow:hidden;}
+.hero{position:relative; width:100%; height:300px; overflow:hidden; display:flex; align-items:center; justify-content:center;}
 .hero img{position:absolute; top:10px; left:10px; height:50px;}
 section{padding:40px 15px; margin:10px auto; max-width:900px; border-radius:10px; background:rgba(0,0,0,0.7);}
 h2{color:#0f0;}
@@ -61,9 +60,9 @@ footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
 <section id="artists">
 <h2>Our Artists</h2>
 <div class="artist-gallery">
-<div class="artist" onclick="openModal('Artist 1 bio here')"><img src="artist1.jpg"><p>Artist 1</p></div>
-<div class="artist" onclick="openModal('Artist 2 bio here')"><img src="artist2.jpg"><p>Artist 2</p></div>
-<div class="artist" onclick="openModal('Artist 3 bio here')"><img src="artist3.jpg"><p>Artist 3</p></div>
+<div class="artist" onclick="openModal('Artist 1 bio placeholder')"><img src="artist1.jpg"><p>Artist 1</p></div>
+<div class="artist" onclick="openModal('Artist 2 bio placeholder')"><img src="artist2.jpg"><p>Artist 2</p></div>
+<div class="artist" onclick="openModal('Artist 3 bio placeholder')"><img src="artist3.jpg"><p>Artist 3</p></div>
 </div>
 </section>
 
@@ -108,13 +107,11 @@ footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
 <footer>© 2025 Maneyfeddora Entertainment. All rights reserved.</footer>
 
 <script>
-// --- JS Functions ---
 function toggleTheme(){document.body.classList.toggle('light-mode');}
 function playAllTracks(){const tracks=document.querySelectorAll('audio');let i=0;function playNext(){if(i<tracks.length){tracks[i].play();tracks[i].onended=()=>{i++;playNext();}}}playNext();}
 const modal=document.getElementById('artist-modal'), modalBio=document.getElementById('modal-bio');
 function openModal(bio){modal.style.display='block'; modalBio.textContent=bio;}
 function closeModal(){modal.style.display='none';}
-window.addEventListener('scroll',()=>{document.querySelectorAll('section').forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight-100){s.classList.add('visible');}});});
 async function loadEvents(){try{const res=await fetch('events.json'); const events=await res.json(); const container=document.getElementById('events-container'); container.innerHTML=''; events.forEach(e=>{const div=document.createElement('div'); div.className='event'; div.innerHTML=`<strong>${e.title}</strong><p>Date: ${e.date}</p><p>Location: ${e.location}</p><p>Booking: <a href="mailto:${e.email}">${e.email}</a></p>`; container.appendChild(div);});}catch(err){console.error(err);}}
 loadEvents();
 const form=document.getElementById('contact-form'), status=document.getElementById('form-status');
