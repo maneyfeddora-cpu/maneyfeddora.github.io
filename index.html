@@ -5,8 +5,8 @@
 <title>Maneyfeddora Entertainment</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Maneyfeddora Entertainment - Music Production, Artists, Beats, Events & Social Media Feed.">
-<link rel="icon" type="image/png" href="favicon.png">
-<style
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB..."/> <!-- favicon placeholder -->
+<style>
 body {margin:0; font-family:Arial,sans-serif; background:#000; color:#fff;}
 nav{display:flex; justify-content:center; gap:15px; padding:12px; background:rgba(0,0,0,0.8);}
 nav img{height:50px;}
@@ -22,12 +22,15 @@ h2{color:#0f0;}
 .modal-content{background:#111; margin:10% auto; padding:20px; width:80%; max-width:400px; border-radius:12px; color:#fff;}
 .close{float:right; font-size:24px; cursor:pointer; color:#0f0;}
 footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
+input, textarea, button{margin:5px 0; padding:8px; border-radius:5px; border:none;}
+button{background:#0f0; color:#000; font-weight:bold; cursor:pointer;}
+.light-mode{background:#fff; color:#000;}
 </style>
 </head>
 <body>
 
 <nav>
-<img src="logo.png" alt="Logo">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB..." alt="Logo">
 <a href="#about">About</a>
 <a href="#beats">Beats</a>
 <a href="#artists">Artists</a>
@@ -39,9 +42,9 @@ footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
 </nav>
 
 <div class="hero">
-<img src="logo_mobile.png" alt="Mobile Logo">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB..." alt="Mobile Logo">
 <div class="hero-text">Maneyfeddora Entertainment</div>
-<audio id="bg-music" src="beat1.mp3" autoplay loop></audio>
+<audio id="bg-music" src="data:audio/mp3;base64,//uQxAA..." autoplay loop></audio>
 </div>
 
 <section id="about">
@@ -51,18 +54,18 @@ footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
 
 <section id="beats">
 <h2>Our Beats</h2>
-<div class="track"><strong>Beat 1</strong><audio src="beat1.mp3" controls></audio></div>
-<div class="track"><strong>Beat 2</strong><audio src="beat2.mp3" controls></audio></div>
-<div class="track"><strong>Beat 3</strong><audio src="beat3.mp3" controls></audio></div>
+<div class="track"><strong>Beat 1</strong><audio src="data:audio/mp3;base64,//uQxAAA..." controls></audio></div>
+<div class="track"><strong>Beat 2</strong><audio src="data:audio/mp3;base64,//uQxAAA..." controls></audio></div>
+<div class="track"><strong>Beat 3</strong><audio src="data:audio/mp3;base64,//uQxAAA..." controls></audio></div>
 <button onclick="playAllTracks()">Play All</button>
 </section>
 
 <section id="artists">
 <h2>Our Artists</h2>
 <div class="artist-gallery">
-<div class="artist" onclick="openModal('Artist 1 bio placeholder')"><img src="artist1.jpg"><p>Artist 1</p></div>
-<div class="artist" onclick="openModal('Artist 2 bio placeholder')"><img src="artist2.jpg"><p>Artist 2</p></div>
-<div class="artist" onclick="openModal('Artist 3 bio placeholder')"><img src="artist3.jpg"><p>Artist 3</p></div>
+<div class="artist" onclick="openModal('Artist 1 bio placeholder')"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Artist 1"><p>Artist 1</p></div>
+<div class="artist" onclick="openModal('Artist 2 bio placeholder')"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Artist 2"><p>Artist 2</p></div>
+<div class="artist" onclick="openModal('Artist 3 bio placeholder')"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="Artist 3"><p>Artist 3</p></div>
 </div>
 </section>
 
@@ -108,14 +111,41 @@ footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
 
 <script>
 function toggleTheme(){document.body.classList.toggle('light-mode');}
-function playAllTracks(){const tracks=document.querySelectorAll('audio');let i=0;function playNext(){if(i<tracks.length){tracks[i].play();tracks[i].onended=()=>{i++;playNext();}}}playNext();}
+function playAllTracks(){
+  const tracks=document.querySelectorAll('#beats audio');
+  let i=0;
+  function playNext(){
+    if(i<tracks.length){
+      tracks[i].play();
+      tracks[i].onended=()=>{i++;playNext();}
+    }
+  }
+  playNext();
+}
 const modal=document.getElementById('artist-modal'), modalBio=document.getElementById('modal-bio');
 function openModal(bio){modal.style.display='block'; modalBio.textContent=bio;}
 function closeModal(){modal.style.display='none';}
-async function loadEvents(){try{const res=await fetch('events.json'); const events=await res.json(); const container=document.getElementById('events-container'); container.innerHTML=''; events.forEach(e=>{const div=document.createElement('div'); div.className='event'; div.innerHTML=`<strong>${e.title}</strong><p>Date: ${e.date}</p><p>Location: ${e.location}</p><p>Booking: <a href="mailto:${e.email}">${e.email}</a></p>`; container.appendChild(div);});}catch(err){console.error(err);}}
-loadEvents();
+const eventsData=[
+  {"id":1,"title":"Live Concert Nairobi","date":"2026-12-31T20:00:00","location":"Your Venue","email":"booking@maneyfeddora.com"},
+  {"id":2,"title":"Reggae Night Kampala","date":"2027-01-15T19:00:00","location":"Your Venue","email":"booking@maneyfeddora.com"}
+];
+const container=document.getElementById('events-container');
+eventsData.forEach(e=>{
+  const div=document.createElement('div');
+  div.className='event';
+  div.innerHTML=`<strong>${e.title}</strong><p>Date: ${e.date}</p><p>Location: ${e.location}</p><p>Booking: <a href="mailto:${e.email}">${e.email}</a></p>`;
+  container.appendChild(div);
+});
 const form=document.getElementById('contact-form'), status=document.getElementById('form-status');
-form.addEventListener('submit', async(e)=>{e.preventDefault(); status.textContent="Sending..."; try{const response=await fetch(form.action,{method:form.method,body:new FormData(form),headers:{'Accept':'application/json'}}); if(response.ok){status.textContent="Message sent!"; form.reset();} else{status.textContent="Error sending message.";} }catch{status.textContent="Error sending message.";} });
+form.addEventListener('submit', async(e)=>{
+  e.preventDefault();
+  status.textContent="Sending...";
+  try{
+    const response=await fetch(form.action,{method:form.method,body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(response.ok){status.textContent="Message sent!"; form.reset();}
+    else{status.textContent="Error sending message.";}
+  }catch{status.textContent="Error sending message.";}
+});
 </script>
 
 </body>
