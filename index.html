@@ -5,11 +5,10 @@
 <title>Maneyfeddora Entertainment</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
 <meta name="description" content="Maneyfeddora Entertainment – Music production, artists, beats, and events.">
 
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;}
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
@@ -25,6 +24,19 @@ nav{
   padding:14px 20px;
   background:#000;
   border-bottom:2px solid #00ff00;
+}
+
+/* LOGO CONTAINER */
+.logo-container{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* IMAGE LOGO */
+.logo-container img{
+  height:50px;
+  border-radius:6px;
 }
 
 /* POLISHED TEXT LOGO */
@@ -79,6 +91,8 @@ h2{
   text-align:center;
   padding:60px 20px;
   background:linear-gradient(180deg,#000,#111);
+  /* Optional background image: uncomment and upload hero-bg.jpg */
+  /* background: url('hero-bg.jpg') center/cover no-repeat; */
 }
 
 .hero h1{
@@ -108,6 +122,12 @@ h2{
   padding:15px;
   border-radius:10px;
   text-align:center;
+}
+
+.artist img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:8px;
 }
 
 /* EVENTS */
@@ -156,7 +176,10 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Maneyfeddora-ent</div>
+  <div class="logo-container">
+    <img src="logo.png" alt="Maneyfeddora-ent Logo">
+    <div class="logo">Maneyfeddora-ent</div>
+  </div>
   <div>
     <a href="#about">About</a>
     <a href="#beats">Beats</a>
@@ -212,14 +235,17 @@ footer{
   <h2>Artists</h2>
   <div class="artists">
     <div class="artist">
+      <img src="artist1.png" alt="Artist One">
       <strong>Artist One</strong>
       <p>Genre / Style</p>
     </div>
     <div class="artist">
+      <img src="artist2.png" alt="Artist Two">
       <strong>Artist Two</strong>
       <p>Genre / Style</p>
     </div>
     <div class="artist">
+      <img src="artist3.png" alt="Artist Three">
       <strong>Artist Three</strong>
       <p>Genre / Style</p>
     </div>
