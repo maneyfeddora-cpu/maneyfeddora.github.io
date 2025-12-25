@@ -8,21 +8,7 @@
 <!-- SEO -->
 <meta name="description" content="Maneyfeddora Entertainment – Music production, artists, beats, and events.">
 
-<style>.logo {
-  font-size: 36px;             /* Bigger text */
-  font-weight: 900;            /* Extra bold */
-  letter-spacing: 3px;         /* Spacing between letters */
-  color: #00ff00;              /* Bright green */
-  text-transform: uppercase;   /* All caps */
-  text-shadow: 2px 2px 4px #000; /* Slight shadow for depth */
-  transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover effect */
-}
-
-/* Hover effect */
-.logo:hover {
-  color: #00cc00;               /* Slightly darker green */
-  transform: scale(1.05);       /* Small pop effect */
-}
+<style>
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -41,13 +27,27 @@ nav{
   border-bottom:2px solid #00ff00;
 }
 
-/* TEXT LOGO (NO IMAGE) */
+/* POLISHED TEXT LOGO */
 .logo{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:#00ff00;
-  text-transform:uppercase;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #00ff00;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px #000;
+  transition: transform 0.3s ease, color 0.3s ease;
+  animation: glow 2s infinite;
+}
+
+.logo:hover {
+  color: #00cc00;
+  transform: scale(1.05);
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
+  50% { text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; }
+  100% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
 }
 
 /* NAV LINKS */
