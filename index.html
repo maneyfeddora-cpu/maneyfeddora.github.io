@@ -1,60 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Maneyfeddora Entertainment</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
-    header {
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #0f0, #ff0, #f00);
-      color: #000;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    footer {
-      padding: 20px;
-      background: #111;
-      font-size: 14px;
-    }
-    a {
-      color: #0f0;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Maneyfeddora Entertainment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Maneyfeddora Entertainment - Music Production, Artists, Beats, Events & Social Media Feed.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+/* --- Styles (same as previous full version) --- */
+body {margin:0; font-family:Arial,sans-serif; background:#000; color:#fff;}
+nav{display:flex; justify-content:center; gap:15px; padding:12px; background:rgba(0,0,0,0.8);}
+nav img{height:50px;}
+nav a, nav button{color:#0f0; text-decoration:none; font-weight:bold; padding:8px 10px; border-radius:5px; border:none; cursor:pointer;}
+.hero{position:relative; width:100%; height:300px; overflow:hidden;}
+.hero img{position:absolute; top:10px; left:10px; height:50px;}
+section{padding:40px 15px; margin:10px auto; max-width:900px; border-radius:10px; background:rgba(0,0,0,0.7);}
+h2{color:#0f0;}
+.track, .event{margin:15px 0; padding:10px; background: rgba(255,255,255,0.05); border-radius:8px;}
+.artist-gallery{display:flex; gap:15px; flex-wrap:wrap; justify-content:center;}
+.artist img{width:120px; height:120px; border-radius:50%; object-fit:cover;}
+.modal{display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.9);}
+.modal-content{background:#111; margin:10% auto; padding:20px; width:80%; max-width:400px; border-radius:12px; color:#fff;}
+.close{float:right; font-size:24px; cursor:pointer; color:#0f0;}
+footer{padding:20px; background:rgba(0,0,0,0.8); text-align:center;}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Maneyfeddora Entertainment</h1>
-  <p>Music Production • Entertainment • Creative Culture</p>
-</header>
+<nav>
+<img src="logo.png" alt="Logo">
+<a href="#about">About</a>
+<a href="#beats">Beats</a>
+<a href="#artists">Artists</a>
+<a href="#events">Events</a>
+<a href="#contact">Contact</a>
+<a href="#newsletter">Newsletter</a>
+<a href="#social">Social</a>
+<button onclick="toggleTheme()">Light/Dark</button>
+</nav>
 
-<section>
-  <h2>About Us</h2>
-  <p>
-    Maneyfeddora Entertainment is a creative music production and entertainment
-    company focused on original sound, artist development, and high-quality vibes.
-  </p>
+<div class="hero">
+<img src="logo_mobile.png" alt="Mobile Logo">
+<div class="hero-text">Maneyfeddora Entertainment</div>
+<audio id="bg-music" src="beat1.mp3" autoplay loop></audio>
+</div>
+
+<section id="about">
+<h2>About Us</h2>
+<p>We produce original music, develop artists, and create high-quality vibes for fans worldwide.</p>
 </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: maneyfeddora@gmail.com</p>
-  <p>Instagram: <a href="#">@maneyfeddora</a></p>
+<section id="beats">
+<h2>Our Beats</h2>
+<div class="track"><strong>Beat 1</strong><audio src="beat1.mp3" controls></audio></div>
+<div class="track"><strong>Beat 2</strong><audio src="beat2.mp3" controls></audio></div>
+<div class="track"><strong>Beat 3</strong><audio src="beat3.mp3" controls></audio></div>
+<button onclick="playAllTracks()">Play All</button>
 </section>
 
-<footer>
-  © 2025 Maneyfeddora Entertainment. All rights reserved.
-</footer>
+<section id="artists">
+<h2>Our Artists</h2>
+<div class="artist-gallery">
+<div class="artist" onclick="openModal('Artist 1 bio here')"><img src="artist1.jpg"><p>Artist 1</p></div>
+<div class="artist" onclick="openModal('Artist 2 bio here')"><img src="artist2.jpg"><p>Artist 2</p></div>
+<div class="artist" onclick="openModal('Artist 3 bio here')"><img src="artist3.jpg"><p>Artist 3</p></div>
+</div>
+</section>
+
+<section id="events">
+<h2>Upcoming Events</h2>
+<div id="events-container"></div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: maneyfeddora@gmail.com</p>
+<form id="contact-form" action="YOUR_FORMSPREE_ENDPOINT" method="POST">
+<input type="text" name="name" placeholder="Your Name" required><br>
+<input type="email" name="email" placeholder="Your Email" required><br>
+<textarea name="message" placeholder="Your Message" required></textarea><br>
+<button type="submit">Send</button>
+</form>
+<p id="form-status"></p>
+</section>
+
+<section id="newsletter">
+<h2>Newsletter</h2>
+<form action="YOUR_MAILCHIMP_ENDPOINT" method="POST">
+<input type="email" name="EMAIL" placeholder="Your Email" required>
+<button type="submit">Subscribe</button>
+</form>
+</section>
+
+<section id="social">
+<h2>Social</h2>
+<iframe src="https://lightwidget.com/widgets/YOUR_INSTAGRAM_WIDGET.html" width="300" height="400"></iframe>
+<iframe src="https://www.tiktok.com/embed/YOUR_TIKTOK_EMBED" width="300" height="400"></iframe>
+</section>
+
+<div id="artist-modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<p id="modal-bio"></p>
+</div>
+</div>
+
+<footer>© 2025 Maneyfeddora Entertainment. All rights reserved.</footer>
+
+<script>
+// --- JS Functions ---
+function toggleTheme(){document.body.classList.toggle('light-mode');}
+function playAllTracks(){const tracks=document.querySelectorAll('audio');let i=0;function playNext(){if(i<tracks.length){tracks[i].play();tracks[i].onended=()=>{i++;playNext();}}}playNext();}
+const modal=document.getElementById('artist-modal'), modalBio=document.getElementById('modal-bio');
+function openModal(bio){modal.style.display='block'; modalBio.textContent=bio;}
+function closeModal(){modal.style.display='none';}
+window.addEventListener('scroll',()=>{document.querySelectorAll('section').forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight-100){s.classList.add('visible');}});});
+async function loadEvents(){try{const res=await fetch('events.json'); const events=await res.json(); const container=document.getElementById('events-container'); container.innerHTML=''; events.forEach(e=>{const div=document.createElement('div'); div.className='event'; div.innerHTML=`<strong>${e.title}</strong><p>Date: ${e.date}</p><p>Location: ${e.location}</p><p>Booking: <a href="mailto:${e.email}">${e.email}</a></p>`; container.appendChild(div);});}catch(err){console.error(err);}}
+loadEvents();
+const form=document.getElementById('contact-form'), status=document.getElementById('form-status');
+form.addEventListener('submit', async(e)=>{e.preventDefault(); status.textContent="Sending..."; try{const response=await fetch(form.action,{method:form.method,body:new FormData(form),headers:{'Accept':'application/json'}}); if(response.ok){status.textContent="Message sent!"; form.reset();} else{status.textContent="Error sending message.";} }catch{status.textContent="Error sending message.";} });
+</script>
 
 </body>
 </html>
