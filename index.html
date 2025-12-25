@@ -8,238 +8,61 @@
 
 <style>
 *{box-sizing:border-box;}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#000;
-  color:#fff;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#000;color:#fff;}
+html {scroll-behavior: smooth;}
 
 /* NAVBAR */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 20px;
-  background:#000;
-  border-bottom:2px solid #00ff00;
-}
+nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#000;border-bottom:2px solid #00ff00;}
+.logo-container{display:flex;align-items:center;gap:10px;}
+.logo-container img{height:50px;border-radius:6px;}
+.logo{font-size:36px;font-weight:900;letter-spacing:3px;color:#00ff00;text-transform:uppercase;text-shadow:2px 2px 4px #000;transition:transform 0.3s ease,color 0.3s ease;animation:glow 2s infinite;}
+.logo:hover{color:#00cc00;transform:scale(1.05);}
+@keyframes glow{0%{text-shadow:0 0 5px #00ff00,0 0 10px #00ff00;}50%{text-shadow:0 0 15px #00ff00,0 0 25px #00ff00;}100%{text-shadow:0 0 5px #00ff00,0 0 10px #00ff00;}}
+nav a{color:#00ff00;text-decoration:none;margin-left:15px;font-weight:bold;transition:color 0.3s,border-bottom 0.3s;}
+nav a:hover{text-decoration:underline;}
+nav a.active{color:#00cc00;border-bottom:2px solid #00cc00;}
 
-.logo-container{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logo-container img{
-  height:50px;
-  border-radius:6px;
-}
-
-.logo{
-  font-size: 36px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: #00ff00;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 4px #000;
-  transition: transform 0.3s ease, color 0.3s ease;
-  animation: glow 2s infinite;
-}
-
-.logo:hover {
-  color: #00cc00;
-  transform: scale(1.05);
-}
-
-@keyframes glow {
-  0% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
-  50% { text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; }
-  100% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
-}
-
-nav a{
-  color:#00ff00;
-  text-decoration:none;
-  margin-left:15px;
-  font-weight:bold;
-  transition: color 0.3s, border-bottom 0.3s;
-}
-
-nav a:hover{
-  text-decoration:underline;
-}
-
-nav a.active {
-  color: #00cc00;
-  border-bottom: 2px solid #00cc00;
-}
-
-/* HERO SECTION */
-.hero{
-  position:relative;
-  text-align:center;
-  padding:100px 20px;
-  overflow:hidden;
-}
-
-.hero-bg{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.3);
-  z-index:0;
-  transition: background-image 1s ease-in-out;
-}
-
-.hero-text{
-  position:relative;
-  z-index:1;
-  color:#00ff00;
-}
-
-@keyframes heroPulse {
-  0% { transform: scale(1); opacity: 0.95; }
-  50% { transform: scale(1.02); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.95; }
-}
-
-.hero-text h1 {
-  font-size:48px;
-  font-weight:900;
-  letter-spacing:4px;
-  animation: heroPulse 4s infinite;
-}
-
-.hero-text p{
-  font-size:20px;
-}
+/* HERO */
+.hero{position:relative;text-align:center;padding:100px 20px;overflow:hidden;}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;filter:brightness(0.3);z-index:0;transition:background-image 1s ease-in-out;}
+.hero-text{position:relative;z-index:1;color:#00ff00;}
+@keyframes heroPulse{0%{transform:scale(1);opacity:0.95;}50%{transform:scale(1.02);opacity:1;}100%{transform:scale(1);opacity:0.95;}}
+.hero-text h1{font-size:48px;font-weight:900;letter-spacing:4px;animation:heroPulse 4s infinite;}
+.hero-text p{font-size:20px;}
 
 /* SECTIONS */
-section{
-  padding:40px 20px;
-  max-width:900px;
-  margin:auto;
-  opacity:0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-
-section.visible{
-  opacity:1;
-  transform: translateY(0);
-}
-
-h2{
-  color:#00ff00;
-  margin-bottom:15px;
-}
-
-/* BEATS */
-.track{
-  background:#111;
-  padding:15px;
-  margin-bottom:10px;
-  border-radius:8px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.track:hover{
-  transform: scale(1.02);
-  box-shadow: 0 0 25px #00ff00;
-}
+section{padding:40px 20px;max-width:900px;margin:auto;opacity:0;transform:translateY(20px);transition:all 0.6s ease-out;}
+section.visible{opacity:1;transform:translateY(0);}
+h2{color:#00ff00;margin-bottom:15px;}
 
 /* ARTISTS */
-.artists{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.artist{
-  flex:1;
-  min-width:150px;
-  background:#111;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.artist:hover{
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #00ff00;
-}
-
-.artist img{
-  width:100%;
-  border-radius:10px;
-  margin-bottom:8px;
-}
+.artists{display:flex;gap:15px;flex-wrap:wrap;}
+.artist{flex:1;min-width:150px;background:#111;padding:15px;border-radius:10px;text-align:center;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.artist:hover{transform:scale(1.05);box-shadow:0 0 20px #00ff00;}
+.artist img{width:100%;border-radius:10px;margin-bottom:8px;}
 
 /* EVENTS */
-.event{
-  background:#111;
-  padding:15px;
-  margin-bottom:10px;
-  border-radius:8px;
-}
+.event{background:#111;padding:15px;margin-bottom:10px;border-radius:8px;}
 
 /* CONTACT FORM */
-input,textarea,button{
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-  border-radius:6px;
-  border:none;
-}
-
-button{
-  background:#00ff00;
-  font-weight:bold;
-  cursor:pointer;
-}
+input,textarea,button{width:100%;padding:10px;margin-top:8px;border-radius:6px;border:none;}
+button{background:#00ff00;font-weight:bold;cursor:pointer;}
 
 /* SOCIAL EMBEDS */
-.social-iframe{
-  width:100%;
-  max-width:400px;
-  border:none;
-  margin-bottom:15px;
-}
+.social-iframe{width:100%;max-width:400px;border:none;margin-bottom:15px;}
 
 /* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  background:#000;
-  border-top:2px solid #00ff00;
-  font-size:14px;
-}
+footer{text-align:center;padding:20px;background:#000;border-top:2px solid #00ff00;font-size:14px;}
 
 /* MOBILE */
-@media(max-width:600px){
-  nav{
-    flex-direction:column;
-    gap:10px;
-  }
-  .artists{
-    flex-direction:column;
-  }
-}
+@media(max-width:600px){nav{flex-direction:column;gap:10px;}.artists{flex-direction:column;}}
 
 /* HERO AUDIO HIDDEN */
-#hero-beat{
-  display:none;
-}
+#hero-beat{display:none;}
+
+/* BEAT DASHBOARD */
+.beat-buttons button{background:#111;color:#00ff00;border:2px solid #00ff00;margin:5px 5px 15px 0;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:bold;transition:all 0.3s ease;}
+.beat-buttons button:hover{background:#00ff00;color:#000;transform:scale(1.05);}
 </style>
 </head>
 
@@ -285,27 +108,15 @@ footer{
 <!-- BEATS -->
 <section id="beats">
   <h2>Beats</h2>
-  <div class="track">
-    <strong>Beat One</strong>
-    <audio controls style="width:100%">
-      <source src="beats/beat1.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+  <div class="beat-buttons">
+    <button data-src="beats/beat1.mp3">Beat One</button>
+    <button data-src="beats/beat2.mp3">Beat Two</button>
+    <button data-src="beats/beat3.mp3">Beat Three</button>
   </div>
-  <div class="track">
-    <strong>Beat Two</strong>
-    <audio controls style="width:100%">
-      <source src="beats/beat2.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-  <div class="track">
-    <strong>Beat Three</strong>
-    <audio controls style="width:100%">
-      <source src="beats/beat3.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+  <audio id="beat-player" controls style="width:100%; margin-top:15px;">
+    <source src="beats/beat1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </section>
 
 <!-- ARTISTS -->
@@ -348,10 +159,8 @@ footer{
 <!-- SOCIAL MEDIA EMBEDS -->
 <section id="socials">
   <h2>Follow Us</h2>
-  <iframe class="social-iframe" src="https://www.instagram.com/p/POST_ID/embed" 
-          scrolling="no" allowtransparency="true"></iframe>
-  <iframe class="social-iframe" src="https://www.tiktok.com/embed/v/VIDEO_ID" 
-          allowfullscreen></iframe>
+  <iframe class="social-iframe" src="https://www.instagram.com/p/POST_ID/embed" scrolling="no" allowtransparency="true"></iframe>
+  <iframe class="social-iframe" src="https://www.tiktok.com/embed/v/VIDEO_ID" allowfullscreen></iframe>
 </section>
 
 <!-- CONTACT -->
@@ -375,9 +184,7 @@ footer{
 const sections = document.querySelectorAll('section');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
   });
 },{threshold:0.1});
 sections.forEach(section => { observer.observe(section); });
@@ -402,6 +209,17 @@ setInterval(() => {
   current = (current+1) % images.length;
   heroBg.style.backgroundImage = `url('${images[current]}')`;
 },5000);
+
+// Mini beats dashboard
+const beatPlayer = document.getElementById('beat-player');
+const beatButtons = document.querySelectorAll('.beat-buttons button');
+beatButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const src = button.getAttribute('data-src');
+    beatPlayer.src = src;
+    beatPlayer.play();
+  });
+});
 </script>
 
 </body>
