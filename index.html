@@ -164,7 +164,7 @@ h2{
   border-radius:8px;
 }
 
-/* FORMS */
+/* CONTACT FORM */
 input,textarea,button{
   width:100%;
   padding:10px;
@@ -177,6 +177,14 @@ button{
   background:#00ff00;
   font-weight:bold;
   cursor:pointer;
+}
+
+/* SOCIAL EMBEDS */
+.social-iframe{
+  width:100%;
+  max-width:400px;
+  border:none;
+  margin-bottom:15px;
 }
 
 /* FOOTER */
@@ -193,6 +201,9 @@ footer{
   nav{
     flex-direction:column;
     gap:10px;
+  }
+  .artists{
+    flex-direction:column;
   }
 }
 </style>
@@ -240,21 +251,24 @@ footer{
   <div class="track">
     <strong>Beat One</strong>
     <audio controls style="width:100%">
-      <source src="" type="audio/mpeg">
+      <source src="beats/beat1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
   </div>
 
   <div class="track">
     <strong>Beat Two</strong>
     <audio controls style="width:100%">
-      <source src="" type="audio/mpeg">
+      <source src="beats/beat2.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
   </div>
 
   <div class="track">
     <strong>Beat Three</strong>
     <audio controls style="width:100%">
-      <source src="" type="audio/mpeg">
+      <source src="beats/beat3.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
   </div>
 </section>
@@ -296,6 +310,18 @@ footer{
     <p>Date: Coming Soon</p>
     <p>Location: TBA</p>
   </div>
+</section>
+
+<!-- SOCIAL MEDIA EMBEDS -->
+<section id="socials">
+  <h2>Follow Us</h2>
+  <!-- Instagram placeholder -->
+  <iframe class="social-iframe" src="https://www.instagram.com/p/POST_ID/embed" 
+          scrolling="no" allowtransparency="true"></iframe>
+
+  <!-- TikTok placeholder -->
+  <iframe class="social-iframe" src="https://www.tiktok.com/embed/v/VIDEO_ID" 
+          allowfullscreen></iframe>
 </section>
 
 <!-- CONTACT -->
