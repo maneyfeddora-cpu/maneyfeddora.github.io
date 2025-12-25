@@ -84,6 +84,7 @@ nav a.active {
   position:relative;
   text-align:center;
   padding:100px 20px;
+  overflow:hidden;
 }
 
 .hero-bg{
@@ -92,9 +93,11 @@ nav a.active {
   left:0;
   width:100%;
   height:100%;
-  background: url('hero-bg.jpg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
   filter: brightness(0.3);
   z-index:0;
+  transition: background-image 1s ease-in-out;
 }
 
 .hero-text{
@@ -232,6 +235,11 @@ footer{
     flex-direction:column;
   }
 }
+
+/* HERO AUDIO HIDDEN */
+#hero-beat{
+  display:none;
+}
 </style>
 </head>
 
@@ -259,6 +267,10 @@ footer{
     <h1>Maneyfeddora Entertainment</h1>
     <p>Music • Artists • Beats • Events</p>
   </div>
+  <audio id="hero-beat" autoplay loop>
+    <source src="beats/beat1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </div>
 
 <!-- ABOUT -->
@@ -273,7 +285,6 @@ footer{
 <!-- BEATS -->
 <section id="beats">
   <h2>Beats</h2>
-
   <div class="track">
     <strong>Beat One</strong>
     <audio controls style="width:100%">
@@ -281,7 +292,6 @@ footer{
       Your browser does not support the audio element.
     </audio>
   </div>
-
   <div class="track">
     <strong>Beat Two</strong>
     <audio controls style="width:100%">
@@ -289,7 +299,6 @@ footer{
       Your browser does not support the audio element.
     </audio>
   </div>
-
   <div class="track">
     <strong>Beat Three</strong>
     <audio controls style="width:100%">
@@ -324,13 +333,11 @@ footer{
 <!-- EVENTS -->
 <section id="events">
   <h2>Events</h2>
-
   <div class="event">
     <strong>Live Performance</strong>
     <p>Date: Coming Soon</p>
     <p>Location: TBA</p>
   </div>
-
   <div class="event">
     <strong>Studio Session</strong>
     <p>Date: Coming Soon</p>
@@ -341,11 +348,8 @@ footer{
 <!-- SOCIAL MEDIA EMBEDS -->
 <section id="socials">
   <h2>Follow Us</h2>
-  <!-- Instagram placeholder -->
   <iframe class="social-iframe" src="https://www.instagram.com/p/POST_ID/embed" 
           scrolling="no" allowtransparency="true"></iframe>
-
-  <!-- TikTok placeholder -->
   <iframe class="social-iframe" src="https://www.tiktok.com/embed/v/VIDEO_ID" 
           allowfullscreen></iframe>
 </section>
@@ -367,7 +371,7 @@ footer{
 </footer>
 
 <script>
-// Scroll fade-in animation
+// Scroll fade-in
 const sections = document.querySelectorAll('section');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -376,27 +380,28 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 },{threshold:0.1});
+sections.forEach(section => { observer.observe(section); });
 
-sections.forEach(section => {
-  observer.observe(section);
-});
-
-// Active nav link highlight
+// Active nav highlight
 const navLinks = document.querySelectorAll('nav a');
 window.addEventListener('scroll', () => {
   let fromTop = window.scrollY + 60;
   navLinks.forEach(link => {
     const section = document.querySelector(link.getAttribute('href'));
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
+    if(section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop){
       link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    } else { link.classList.remove('active'); }
   });
 });
+
+// Hero slideshow
+const heroBg = document.querySelector('.hero-bg');
+const images = ['hero-bg1.jpg','hero-bg2.jpg','hero-bg3.jpg']; // replace with your images
+let current = 0;
+setInterval(() => {
+  current = (current+1) % images.length;
+  heroBg.style.backgroundImage = `url('${images[current]}')`;
+},5000);
 </script>
 
 </body>
