@@ -38,7 +38,6 @@ h2{color:#00ff00;margin-bottom:15px;}
 /* ARTISTS */
 .artists{display:flex;gap:15px;flex-wrap:wrap;}
 .artist{flex:1;min-width:150px;background:#111;padding:15px;border-radius:10px;text-align:center;transition:transform 0.3s ease,box-shadow 0.3s ease;}
-.artist:hover{transform:scale(1.05);box-shadow:0 0 20px #00ff00;}
 .artist img{width:100%;border-radius:10px;margin-bottom:8px;}
 
 /* EVENTS */
@@ -63,6 +62,15 @@ footer{text-align:center;padding:20px;background:#000;border-top:2px solid #00ff
 /* BEAT DASHBOARD */
 .beat-buttons button{background:#111;color:#00ff00;border:2px solid #00ff00;margin:5px 5px 15px 0;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:bold;transition:all 0.3s ease;}
 .beat-buttons button:hover{background:#00ff00;color:#000;transform:scale(1.05);}
+
+/* Hover Glow Animations */
+@keyframes pulseGlow{
+  0%{box-shadow:0 0 10px #00ff00,0 0 20px #00ff00 inset;}
+  50%{box-shadow:0 0 25px #00ff00,0 0 50px #00ff00 inset;}
+  100%{box-shadow:0 0 10px #00ff00,0 0 20px #00ff00 inset;}
+}
+.artist:hover{transform:scale(1.08) rotateZ(1deg);animation:pulseGlow 1.5s infinite;}
+.social-iframe:hover{animation:pulseGlow 1.5s infinite;transform:scale(1.02);}
 </style>
 </head>
 
